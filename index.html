@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+    />
+    <style>
+      /* Customize Hero Section */
+      .hero.is-primary {
+        background-color: black; /* Black background */
+        color: white; /* White text */
+        text-align: center; /* Center text horizontally */
+      }
+
+      /* Center the title */
+      .hero-body .title {
+        font-size: 3rem; /* Larger title size */
+        font-weight: bold;
+      }
+
+      /* Ensure the container is centered */
+      .container {
+        margin: 0 auto; /* Center the container */
+      }
+    </style>
+  </head>
+  <body>
+    <section class="hero is-info">
+      <div class="hero-body">
+        <div class="container">
+          <h1 class="title">DAILY INPUT DATA</h1>
+        </div>
+      </div>
+    </section>
+    <form id="form" class="container" method="POST">
+
+      <div class="field">
+        <label class="label">Code Store</label>
+        <div class="control">
+          <input
+            class="input"
+            type="text"
+            placeholder="6 huruf kode store"
+            name="Code Store"
+            required
+            title="This field is required"
+            id="code-store"
+            maxlength="6" 
+            oninput="validateInput(this)"
+            style="text-transform: uppercase;"
+          />
+        </div>
+      </div>
+      
+      <script>
+        function validateInput(input) {
+          // Remove any non-alphabetical characters and ensure uppercase
+          input.value = input.value.replace(/[^a-zA-Z]/g, '').toUpperCase();
+        }
+      </script>      
+
+      <div class="field">
+        <label class="label">Sales Date</label>
+        <div class="control">
+          <input
+            class="input"
+            type="date"
+            name="Sales Date"
+            required
+            title="This field is required"
+            id="sales-date"
+          />
+        </div>
+      </div>
+      <script>
+        // Get yesterday's date
+        const yesterday = new Date();
+        yesterday.setDate(yesterday.getDate() - 1);
+        
+        // Format the date to YYYY-MM-DD
+        const formattedDate = yesterday.toISOString().split("T")[0];
+        
+        // Set the default value of the input field
+        const salesDateInput = document.getElementById("sales-date");
+        salesDateInput.value = formattedDate;
+      </script>
+
+<div class="field">
+  <label class="label" style="background-color: black; color: white; padding: 5px; border-radius: 4px;">
+    Sales & TC </label>
+  <div class="control is-flex" style="gap: 10px;">
+    <!-- Field for Total Sales Gross -->
+    <div style="flex: 1;">
+      <label class="label">Total Sales Gross</label>
+      <input
+        class="input"
+        type="number"
+        placeholder="Masukkan Total Sales Gross"
+        name="Total Sales Gross"
+        required
+        title="This field is required"
+      />
+    </div>
+
+    <!-- Field for Total TC -->
+    <div style="flex: 1;">
+      <label class="label">Total TC</label>
+      <input
+        class="input"
+        type="number"
+        placeholder="TC Online + TC Offline + TC Packaging"
+        name="Total TC"
+        required
+        title="This field is required"
+      />
+    </div>
+
+    <!-- Field for Total TC Packaging -->
+    <div style="flex: 1;">
+      <label class="label">Total TC Packaging</label>
+      <input
+        class="input"
+        type="number"
+        placeholder="Masukkan Total Bill / TC Packaging"
+        name="Total TC Packaging"
+        required
+        title="This field is required"
+      />
+    </div>
+  </div>
+</div>
+
+<div class="field"></div>
+  <label class="label" style="background-color: rgb(71, 195, 120); color: black; padding: 5px; border-radius: 4px;">
+    Grabfood </label>
+  <div class="control is-flex" style="gap: 10px;">
+    <!-- Field for Total Sales Gross -->
+    <div style="flex: 1;">
+      <label class="label">Total Sales</label>
+      <input
+        class="input"
+        type="number"
+        placeholder="Masukkan Total Sales Grabfood"
+        name="Total Sales Grabfood"
+        required
+        title="This field is required"
+      />
+    </div>
+
+    <!-- Field for Total TC -->
+    <div style="flex: 1;">
+      <label class="label">Total TC</label>
+      <input
+        class="input"
+        type="number"
+        placeholder="Masukkan Total TC Grabfood"
+        name="Total TC Grabfood"
+        required
+        title="This field is required"
+      />
+    </div>
+  </div>
+</div>
+
+<div class="field"></div>
+  <label class="label" style="background-color: rgb(14, 70, 43); color: white; padding: 5px; border-radius: 4px;">
+    Gofood </label>
+  <div class="control is-flex" style="gap: 10px;">
+    <!-- Field for Total Sales Gross -->
+    <div style="flex: 1;">
+      <label class="label">Total Sales</label>
+      <input
+        class="input"
+        type="number"
+        placeholder="Masukkan Total Sales Gofood"
+        name="Total Sales Gofood"
+        required
+        title="This field is required"
+      />
+    </div>
+
+    <!-- Field for Total TC -->
+    <div style="flex: 1;">
+      <label class="label">Total TC</label>
+      <input
+        class="input"
+        type="number"
+        placeholder="Masukkan Total TC Gofood"
+        name="Total TC Gofood"
+        required
+        title="This field is required"
+      />
+    </div>
+  </div>
+</div>
+      
+<div class="field"></div>
+  <label class="label" style="background-color: rgb(226, 136, 45); color: black; padding: 5px; border-radius: 4px;">
+    Shopeefood </label>
+  <div class="control is-flex" style="gap: 10px;">
+    <!-- Field for Total Sales Gross -->
+    <div style="flex: 1;">
+      <label class="label">Total Sales</label>
+      <input
+        class="input"
+        type="number"
+        placeholder="Masukkan Total Sales Shopeefood"
+        name="Total Sales Shopeefood"
+        required
+        title="This field is required"
+      />
+    </div>
+
+    <!-- Field for Total TC -->
+    <div style="flex: 1;">
+      <label class="label">Total TC</label>
+      <input
+        class="input"
+        type="number"
+        placeholder="Masukkan Total TC Shopeefood"
+        name="Total TC Shopeefood"
+        required
+        title="This field is required"
+      />
+    </div>
+  </div>
+</div>
+
+<div class="field"></div>
+  <label class="label" style="background-color: black; color: white; padding: 5px; border-radius: 4px;">Others</label>
+  <div class="control is-flex" style="gap: 10px;">
+    <!-- Field for Total Sales Gross -->
+    <div style="flex: 1;">
+      <label class="label">Nominal Cancel Nota</label>
+      <input
+        class="input"
+        type="number"
+        placeholder="Masukkan Total Nominal Cancel Nota"
+        name="Nominal Cancel Nota"
+        required
+        title="This field is required"
+      />
+    </div>
+
+    <!-- Field for Total TC -->
+    <div style="flex: 1;">
+      <label class="label">Nominal lembur Crew</label>
+      <input
+        class="input"
+        type="number"
+        placeholder="Masukkan Total Nominal Lembur Crew"
+        name="Nominal Lembur Crew"
+        required
+        title="This field is required"
+      />
+    </div>
+  </div>
+</div>
+
+<div class="field" style="margin-top: 20px;"> <!-- Add a gap here -->
+  <!-- Header -->
+  <label class="label" style="background-color: black; color: white; padding: 5px; border-radius: 4px;">
+    Product Mix
+  </label>
+
+  <!-- Sub-Header -->
+  <div style="background-color: #f0f0f0; color: #333; padding: 10px; margin-top: 10px; border-radius: 4px;">
+    <strong>MIE</strong>
+  </div>
+
+  <!-- Fields for Mie -->
+  <div class="control is-flex is-align-items-center" style="margin-top: 10px;">
+    <!-- Mie Level 1 -->
+    <label class="label" style="flex: 1; text-align: left; margin-right: 10px;">Mie Suit</label>
+    <input
+      class="input"
+      type="number"
+      placeholder="Masukkan Total Mie Suit"
+      name="Mie Suit"
+      required
+      title="This field is required"
+      style="flex: 2; text-align: right;"
+    />
+  </div>
+
+  <div class="control is-flex is-align-items-center" style="margin-top: 10px;">
+    <label class="label" style="flex: 1; text-align: left; margin-right: 10px;">Mie Hompimpa Level 1</label>
+    <input
+      class="input"
+      type="number"
+      placeholder="Masukkan Total Mie Hompimpa Level 1"
+      name="Mie Hompimpa Lv 1"
+      required
+      title="This field is required"
+      style="flex: 2; text-align: right;"
+    />
+  </div>
+
+  <div class="control is-flex is-align-items-center" style="margin-top: 10px; width: 100%; flex-wrap: nowrap;">
+    <label class="label" style="flex: 1; text-align: left; margin-right: 10px; white-space: nowrap;">
+      Mie Hompimpa Level 2
+    </label>
+    <input
+      class="input"
+      type="number"
+      placeholder="Masukkan Total Mie Hompimpa Level 2"
+      name="Mie Hompimpa Lv 2"
+      required
+      title="This field is required"
+      style="flex: 2; text-align: right;"
+    />
+  </div>  
+
+  <div class="control is-flex is-align-items-center" style="margin-top: 10px; width: 100%; flex-wrap: nowrap;">
+    <label class="label" style="flex: 1; text-align: left; margin-right: 10px; white-space: nowrap;">
+      Mie Hompimpa Level 3
+    </label>
+    <input
+      class="input"
+      type="number"
+      placeholder="Masukkan Total Mie Hompimpa Level 3"
+      name="Mie Hompimpa Lv 3"
+      required
+      title="This field is required"
+      style="flex: 2; text-align: right;"
+    />
+  </div>
+  
+  <div class="control is-flex is-align-items-center" style="margin-top: 10px; width: 100%; flex-wrap: nowrap;">
+    <label class="label" style="flex: 1; text-align: left; margin-right: 10px; white-space: nowrap;">
+      Mie Hompimpa Level 4
+    </label>
+    <input
+      class="input"
+      type="number"
+      placeholder="Masukkan Total Mie Hompimpa Level 4"
+      name="Mie Hompimpa Lv 4"
+      required
+      title="This field is required"
+      style="flex: 2; text-align: right;"
+    />
+  </div>
+  
+  <div class="control is-flex is-align-items-center" style="margin-top: 10px; width: 100%; flex-wrap: nowrap;">
+    <label class="label" style="flex: 1; text-align: left; margin-right: 10px; white-space: nowrap;">
+      Mie Hompimpa Level 6
+    </label>
+    <input
+      class="input"
+      type="number"
+      placeholder="Masukkan Total Mie Hompimpa Level 6"
+      name="Mie Hompimpa Lv 6"
+      required
+      title="This field is required"
+      style="flex: 2; text-align: right;"
+    />
+  </div>
+  
+  <div class="control is-flex is-align-items-center" style="margin-top: 10px; width: 100%; flex-wrap: nowrap;">
+    <label class="label" style="flex: 1; text-align: left; margin-right: 10px; white-space: nowrap;">
+      Mie Hompimpa Level 8
+    </label>
+    <input
+      class="input"
+      type="number"
+      placeholder="Masukkan Total Mie Hompimpa Level 8"
+      name="Mie Hompimpa Lv 8"
+      required
+      title="This field is required"
+      style="flex: 2; text-align: right;"
+    />
+  </div> 
+  
+  <div class="control is-flex is-align-items-center" style="margin-top: 10px;">
+    <label class="label" style="flex: 1; text-align: left; margin-right: 10px;">Mie Gacoan</label>
+    <input
+      class="input"
+      type="number"
+      placeholder="Masukkan Total Mie Gacoan"
+      name="Mie Gacoan"
+      required
+      title="This field is required"
+      style="flex: 2; text-align: right;"
+    />
+  </div>
+
+  <div class="control is-flex is-align-items-center" style="margin-top: 10px; width: 100%; flex-wrap: nowrap;">
+    <label class="label" style="flex: 1; text-align: left; margin-right: 10px; white-space: nowrap;">
+      Mie Gacoan Level 1
+    </label>
+    <input
+      class="input"
+      type="number"
+      placeholder="Masukkan Total Mie Gacoan Level 1"
+      name="Mie Gacoan Lv 1"
+      required
+      title="This field is required"
+      style="flex: 2; text-align: right;"
+    />
+  </div>
+
+  <div class="control is-flex is-align-items-center" style="margin-top: 10px; width: 100%; flex-wrap: nowrap;">
+    <label class="label" style="flex: 1; text-align: left; margin-right: 10px; white-space: nowrap;">
+      Mie Gacoan Level 2
+    </label>
+    <input
+      class="input"
+      type="number"
+      placeholder="Masukkan Total Mie Gacoan Level 2"
+      name="Mie Gacoan Lv 2"
+      required
+      title="This field is required"
+      style="flex: 2; text-align: right;"
+    />
+  </div>  
+
+  <div class="control is-flex is-align-items-center" style="margin-top: 10px; width: 100%; flex-wrap: nowrap;">
+    <label class="label" style="flex: 1; text-align: left; margin-right: 10px; white-space: nowrap;">
+      Mie Gacoan Level 3
+    </label>
+    <input
+      class="input"
+      type="number"
+      placeholder="Masukkan Total Mie Gacoan Level 3"
+      name="Mie Gacoan Lv 3"
+      required
+      title="This field is required"
+      style="flex: 2; text-align: right;"
+    />
+  </div>
+  
+  <div class="control is-flex is-align-items-center" style="margin-top: 10px; width: 100%; flex-wrap: nowrap;">
+    <label class="label" style="flex: 1; text-align: left; margin-right: 10px; white-space: nowrap;">
+      Mie Gacoan Level 4
+    </label>
+    <input
+      class="input"
+      type="number"
+      placeholder="Masukkan Total Mie Gacoan Level 4"
+      name="Mie Gacoan Lv 4"
+      required
+      title="This field is required"
+      style="flex: 2; text-align: right;"
+    />
+  </div>
+  
+  <div class="control is-flex is-align-items-center" style="margin-top: 10px; width: 100%; flex-wrap: nowrap;">
+    <label class="label" style="flex: 1; text-align: left; margin-right: 10px; white-space: nowrap;">
+      Mie Gacoan Level 6
+    </label>
+    <input
+      class="input"
+      type="number"
+      placeholder="Masukkan Total Mie Gacoan Level 6"
+      name="Mie Gacoan Lv 6"
+      required
+      title="This field is required"
+      style="flex: 2; text-align: right;"
+    />
+  </div>
+  
+  <div class="control is-flex is-align-items-center" style="margin-top: 10px; width: 100%; flex-wrap: nowrap;">
+    <label class="label" style="flex: 1; text-align: left; margin-right: 10px; white-space: nowrap;">
+      Mie Gacoan Level 8
+    </label>
+    <input
+      class="input"
+      type="number"
+      placeholder="Masukkan Total Mie Gacoan Level 8"
+      name="Mie Gacoan Lv 8"
+      required
+      title="This field is required"
+      style="flex: 2; text-align: right;"
+    />
+  </div>  
+
+  <!-- Sub-Header -->
+  <div style="background-color: #f0f0f0; color: #333; padding: 10px; margin-top: 10px; border-radius: 4px;">
+    <strong>DIMSUM</strong>
+  </div>
+
+  <div class="control is-flex is-align-items-center" style="margin-top: 10px;">
+    <label class="label" style="flex: 1; text-align: left; margin-right: 10px;">
+      Pangsit Goreng
+    </label>
+    <input
+      class="input"
+      type="number"
+      placeholder="Masukkan Total Pangsit Goreng"
+      name="Pangsit Goreng"
+      required
+      title="This field is required"
+      style="flex: 2; text-align: right;"
+    />
+  </div>
+
+  <div class="control is-flex is-align-items-center" style="margin-top: 10px;">
+    <label class="label" style="flex: 1; text-align: left; margin-right: 10px;">
+      Siomay Udang
+    </label>
+    <input
+      class="input"
+      type="number"
+      placeholder="Masukkan Total Siomay Udang"
+      name="Siomay Udang"
+      required
+      title="This field is required"
+      style="flex: 2; text-align: right;"
+    />
+  </div>
+
+  <div class="control is-flex is-align-items-center" style="margin-top: 10px; width: 100%; flex-wrap: nowrap;">
+    <label class="label" style="flex: 1; text-align: left; margin-right: 10px; white-space: nowrap;">
+      Udang Keju
+    </label>
+    <input
+      class="input"
+      type="number"
+      placeholder="Masukkan Total Udang Keju"
+      name="Udang Keju"
+      required
+      title="This field is required"
+      style="flex: 2; text-align: right;"
+    />
+  </div>  
+
+  <div class="control is-flex is-align-items-center" style="margin-top: 10px; width: 100%; flex-wrap: nowrap;">
+    <label class="label" style="flex: 1; text-align: left; margin-right: 10px; white-space: nowrap;">
+      Lumpia Udang
+    </label>
+    <input
+      class="input"
+      type="number"
+      placeholder="Masukkan Total Lumpia Udang"
+      name="Lumpia Udang"
+      required
+      title="This field is required"
+      style="flex: 2; text-align: right;"
+    />
+  </div>
+  
+  <div class="control is-flex is-align-items-center" style="margin-top: 10px; width: 100%; flex-wrap: nowrap;">
+    <label class="label" style="flex: 1; text-align: left; margin-right: 10px; white-space: nowrap;">
+      Udang Rambutan
+    </label>
+    <input
+      class="input"
+      type="number"
+      placeholder="Masukkan Total Udang Rambutan"
+      name="Udang Rambutan"
+      required
+      title="This field is required"
+      style="flex: 2; text-align: right;"
+    />
+  </div>
+  
+  <div class="control is-flex is-align-items-center" style="margin-top: 10px; width: 100%; flex-wrap: nowrap;">
+    <label class="label" style="flex: 1; text-align: left; margin-right: 10px; white-space: nowrap;">
+      Super Pao Telur Asin
+    </label>
+    <input
+      class="input"
+      type="number"
+      placeholder="Masukkan Total Super Pao Telur Asin"
+      name="Super Pao Telur Asin"
+      required
+      title="This field is required"
+      style="flex: 2; text-align: right;"
+    />
+  </div>
+  
+  <div class="control is-flex is-align-items-center" style="margin-top: 10px; width: 100%; flex-wrap: nowrap;">
+    <label class="label" style="flex: 1; text-align: left; margin-right: 10px; white-space: nowrap;">
+      Super Pao Coklat
+    </label>
+    <input
+      class="input"
+      type="number"
+      placeholder="Masukkan Total Super Pao Coklat"
+      name="Super Pao Coklat"
+      required
+      title="This field is required"
+      style="flex: 2; text-align: right;"
+    />
+  </div> 
+  
+  <div class="control is-flex is-align-items-center" style="margin-top: 10px;">
+    <label class="label" style="flex: 1; text-align: left; margin-right: 10px;">
+      Siomay Rudal
+    </label>
+    <input
+      class="input"
+      type="number"
+      placeholder="Masukkan Total Siomay Rudal"
+      name="Siomay Rudal"
+      required
+      title="This field is required"
+      style="flex: 2; text-align: right;"
+    />
+  </div>
+
+  <div class="control is-flex is-align-items-center" style="margin-top: 10px; width: 100%; flex-wrap: nowrap;">
+    <label class="label" style="flex: 1; text-align: left; margin-right: 10px; white-space: nowrap;">
+      Super Pao Kacang Hijau
+    </label>
+    <input
+      class="input"
+      type="number"
+      placeholder="Masukkan Super Pao Kacang Hijau"
+      name="Super Pao Kacang Hijau"
+      required
+      title="This field is required"
+      style="flex: 2; text-align: right;"
+    />
+  </div>
+
+  <div class="control is-flex is-align-items-center" style="margin-top: 10px; width: 100%; flex-wrap: nowrap;">
+    <label class="label" style="flex: 1; text-align: left; margin-right: 10px; white-space: nowrap;">
+      Super Pao Taro
+    </label>
+    <input
+      class="input"
+      type="number"
+      placeholder="Masukkan Total Super Pao Taro"
+      name="Super Pao Taro"
+      required
+      title="This field is required"
+      style="flex: 2; text-align: right;"
+    />
+  </div>  
+
+  <!-- Sub-Header -->
+  <div style="background-color: #f0f0f0; color: #333; padding: 10px; margin-top: 10px; border-radius: 4px;">
+    <strong>ES BUAH</strong>
+  </div>
+
+  <div class="control is-flex is-align-items-center" style="margin-top: 10px;">
+    <label class="label" style="flex: 1; text-align: left; margin-right: 10px;">
+      Es Gobak Sodor
+    </label>
+    <input
+      class="input"
+      type="number"
+      placeholder="Masukkan Total Es Gobak Sodor"
+      name="Es Gobak Sodor"
+      required
+      title="This field is required"
+      style="flex: 2; text-align: right;"
+    />
+  </div>
+
+  <div class="control is-flex is-align-items-center" style="margin-top: 10px;">
+    <label class="label" style="flex: 1; text-align: left; margin-right: 10px;">
+      Es Teklek
+    </label>
+    <input
+      class="input"
+      type="number"
+      placeholder="Masukkan Total Es Teklek"
+      name="Es Teklek"
+      required
+      title="This field is required"
+      style="flex: 2; text-align: right;"
+    />
+  </div>
+
+  <div class="control is-flex is-align-items-center" style="margin-top: 10px; width: 100%; flex-wrap: nowrap;">
+    <label class="label" style="flex: 1; text-align: left; margin-right: 10px; white-space: nowrap;">
+      Udang Keju
+    </label>
+    <input
+      class="input"
+      type="number"
+      placeholder="Masukkan Total Udang Keju"
+      name="Udang Keju"
+      required
+      title="This field is required"
+      style="flex: 2; text-align: right;"
+    />
+  </div>  
+
+  <div class="control is-flex is-align-items-center" style="margin-top: 10px; width: 100%; flex-wrap: nowrap;">
+    <label class="label" style="flex: 1; text-align: left; margin-right: 10px; white-space: nowrap;">
+      Es Petak Umpet
+    </label>
+    <input
+      class="input"
+      type="number"
+      placeholder="Masukkan Total Es Petak Umpet"
+      name="Es Petak Umpet"
+      required
+      title="This field is required"
+      style="flex: 2; text-align: right;"
+    />
+  </div>
+  
+  <div class="control is-flex is-align-items-center" style="margin-top: 10px; width: 100%; flex-wrap: nowrap;">
+    <label class="label" style="flex: 1; text-align: left; margin-right: 10px; white-space: nowrap;">
+      Es Sluku Bathok
+    </label>
+    <input
+      class="input"
+      type="number"
+      placeholder="Masukkan Total Es Sluku Bathok"
+      name="Es Sluku Bathok"
+      required
+      title="This field is required"
+      style="flex: 2; text-align: right;"
+    />
+  </div>
+
+  <!-- Sub-Header -->
+  <div style="background-color: #f0f0f0; color: #333; padding: 10px; margin-top: 10px; border-radius: 4px;">
+    <strong>BEVERAGE</strong>
+  </div>
+
+  <!-- Fields for Mie -->
+  <div class="control is-flex is-align-items-center" style="margin-top: 10px;">
+    <!-- Mie Level 1 -->
+    <label class="label" style="flex: 1; text-align: left; margin-right: 10px;">
+      Tea
+    </label>
+    <input
+      class="input"
+      type="number"
+      placeholder="Masukkan Total Tea"
+      name="Tea"
+      required
+      title="This field is required"
+      style="flex: 2; text-align: right;"
+    />
+  </div>
+
+  <div class="control is-flex is-align-items-center" style="margin-top: 10px;">
+    <label class="label" style="flex: 1; text-align: left; margin-right: 10px;">
+      Lemon Tea
+    </label>
+    <input
+      class="input"
+      type="number"
+      placeholder="Masukkan Total Lemon Tea"
+      name="Lemon Tea"
+      required
+      title="This field is required"
+      style="flex: 2; text-align: right;"
+    />
+  </div>
+
+  <div class="control is-flex is-align-items-center" style="margin-top: 10px; width: 100%; flex-wrap: nowrap;">
+    <label class="label" style="flex: 1; text-align: left; margin-right: 10px; white-space: nowrap;">
+      Orange
+    </label>
+    <input
+      class="input"
+      type="number"
+      placeholder="Masukkan Total Orange"
+      name="Orange"
+      required
+      title="This field is required"
+      style="flex: 2; text-align: right;"
+    />
+  </div>  
+
+  <div class="control is-flex is-align-items-center" style="margin-top: 10px; width: 100%; flex-wrap: nowrap;">
+    <label class="label" style="flex: 1; text-align: left; margin-right: 10px; white-space: nowrap;">
+      Air Mineral Botol
+    </label>
+    <input
+      class="input"
+      type="number"
+      placeholder="Masukkan Total Air Mineral Botol"
+      name="Air Mineral Botol"
+      required
+      title="This field is required"
+      style="flex: 2; text-align: right;"
+    />
+  </div>
+  
+  <div class="control is-flex is-align-items-center" style="margin-top: 10px; width: 100%; flex-wrap: nowrap;">
+    <label class="label" style="flex: 1; text-align: left; margin-right: 10px; white-space: nowrap;">
+      Vanilla Latte
+    </label>
+    <input
+      class="input"
+      type="number"
+      placeholder="Masukkan Total Vanilla Latte"
+      name="Vanilla Latte"
+      required
+      title="This field is required"
+      style="flex: 2; text-align: right;"
+    />
+  </div>
+  
+  <div class="control is-flex is-align-items-center" style="margin-top: 10px; width: 100%; flex-wrap: nowrap;">
+    <label class="label" style="flex: 1; text-align: left; margin-right: 10px; white-space: nowrap;">
+      Tea Tarik
+    </label>
+    <input
+      class="input"
+      type="number"
+      placeholder="Masukkan Total Tea Tarik"
+      name="Tea Tarik"
+      required
+      title="This field is required"
+      style="flex: 2; text-align: right;"
+    />
+  </div>
+  
+  <div class="control is-flex is-align-items-center" style="margin-top: 10px; width: 100%; flex-wrap: nowrap;">
+    <label class="label" style="flex: 1; text-align: left; margin-right: 10px; white-space: nowrap;">
+      Thai Tea Ori
+    </label>
+    <input
+      class="input"
+      type="number"
+      placeholder="Masukkan Total Thai Tea Ori"
+      name="Thai Tea Ori"
+      required
+      title="This field is required"
+      style="flex: 2; text-align: right;"
+    />
+  </div> 
+  
+  <div class="control is-flex is-align-items-center" style="margin-top: 10px;">
+    <label class="label" style="flex: 1; text-align: left; margin-right: 10px;">
+      Green Tea Ori
+    </label>
+    <input
+      class="input"
+      type="number"
+      placeholder="Masukkan Total Green Tea Ori"
+      name="Green Tea Ori"
+      required
+      title="This field is required"
+      style="flex: 2; text-align: right;"
+    />
+  </div>
+
+  <div class="control is-flex is-align-items-center" style="margin-top: 10px; width: 100%; flex-wrap: nowrap;">
+    <label class="label" style="flex: 1; text-align: left; margin-right: 10px; white-space: nowrap;">
+      Chocoan Ice
+    </label>
+    <input
+      class="input"
+      type="number"
+      placeholder="Masukkan Total Chocoan Ice"
+      name="Chocoan Ice"
+      required
+      title="This field is required"
+      style="flex: 2; text-align: right;"
+    />
+  </div>
+
+  <div class="control is-flex is-align-items-center" style="margin-top: 10px; width: 100%; flex-wrap: nowrap;">
+    <label class="label" style="flex: 1; text-align: left; margin-right: 10px; white-space: nowrap;">
+      Ice Cream Cone
+    </label>
+    <input
+      class="input"
+      type="number"
+      placeholder="Masukkan Total Ice Cream Cone"
+      name="Ice Cream Cone"
+      required
+      title="This field is required"
+      style="flex: 2; text-align: right;"
+    />
+  </div> 
+  
+  <div class="control is-flex is-align-items-center" style="margin-top: 10px; width: 100%; flex-wrap: nowrap;">
+    <label class="label" style="flex: 1; text-align: left; margin-right: 10px; white-space: nowrap;">
+      Ice Cream Brown Sugar Boba Sundae
+    </label>
+    <input
+      class="input"
+      type="number"
+      placeholder="Masukkan Total Ice Cream Brown Sugar Boba Sundae"
+      name="Ice Cream Brown Sugar Boba Sundae"
+      required
+      title="This field is required"
+      style="flex: 2; text-align: right;"
+    />
+  </div> 
+  
+  <div class="control is-flex is-align-items-center" style="margin-top: 10px;">
+    <label class="label" style="flex: 1; text-align: left; margin-right: 10px;">
+      Ice Cream Oreo Sundae
+    </label>
+    <input
+      class="input"
+      type="number"
+      placeholder="Masukkan Total Ice Cream Oreo Sundae"
+      name="Ice Cream Oreo Sundae"
+      required
+      title="This field is required"
+      style="flex: 2; text-align: right;"
+    />
+  </div>
+
+  <div class="control is-flex is-align-items-center" style="margin-top: 10px; width: 100%; flex-wrap: nowrap;">
+    <label class="label" style="flex: 1; text-align: left; margin-right: 10px; white-space: nowrap;">
+      Ice Cream Strawberry Sundae
+    </label>
+    <input
+      class="input"
+      type="number"
+      placeholder="Masukkan Total Ice Cream Strawberry Sundae"
+      name="Ice Cream Strawberry Sundae"
+      required
+      title="This field is required"
+      style="flex: 2; text-align: right;"
+    />
+  </div>
+
+  <div class="control is-flex is-align-items-center" style="margin-top: 10px; width: 100%; flex-wrap: nowrap;">
+    <label class="label" style="flex: 1; text-align: left; margin-right: 10px; white-space: nowrap;">
+      Ice Cream Chocolate Sundae
+    </label>
+    <input
+      class="input"
+      type="number"
+      placeholder="Masukkan Total Ice Cream Chocolate Sundae"
+      name="Ice Cream Chocolate Sundae"
+      required
+      title="This field is required"
+      style="flex: 2; text-align: right;"
+    />
+  </div>
+
+</div>
+
+<div class="field"></div>
+  <label class="label" style="background-color: black; color: white; padding: 5px; border-radius: 4px;">
+    Agree to Terms & Additional Information</label>
+    <div class="field">
+      <label class="label">Agree to Terms</label>
+      <div class="control">
+        <label class="checkbox">
+          <input type="checkbox" name="Agree To Terms" 
+          required
+          title="This field is required"value="yes" /> Data yang saya input adalah data yang sesuai dengan POS
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">Additional Information</label>
+      <div class="control">
+        <textarea
+          class="textarea"
+          placeholder="Any additional information"
+          name="Notes"
+        ></textarea>
+      </div>
+    </div>
+</div>
+
+      <div class="field is-grouped">
+        <div class="control">
+          <button class="button" type="submit" id="submit-button" style="background-color: black; color: white;">
+            Submit Data
+          </button>
+        </div>        
+        <div class="control">
+          <button class="button is-danger">Cancel</button>
+        </div>
+      </div>
+    </form>
+    <div
+      id="message"
+      style="
+        display: none;
+        margin: 20px;
+        font-weight: bold;
+        color: green;
+        padding: 8px;
+        background-color: beige;
+        border-radius: 4px;
+        border-color: aquamarine;
+      "
+    ></div>
+
+    <script>
+      document.getElementById("form").addEventListener("submit", function (e) {
+        e.preventDefault(); // Prevent the default form submission
+        document.getElementById("message").textContent = "Submitting..";
+        document.getElementById("message").style.display = "block";
+        document.getElementById("submit-button").disabled = true;
+
+        // Collect the form data
+        var formData = new FormData(this);
+        var keyValuePairs = [];
+        for (var pair of formData.entries()) {
+          keyValuePairs.push(pair[0] + "=" + pair[1]);
+        }
+
+        var formDataString = keyValuePairs.join("&");
+
+        // Send a POST request to your Google Apps Script
+        fetch(
+          "https://script.google.com/macros/s/AKfycbzQxTF4-bnPOEXLoIWNsrYtsA5hm9ATNVyoT3PCrwU9eXeACtFnsxTmm-BrNDVKNklt/exec",
+          {
+            redirect: "follow",
+            method: "POST",
+            body: formDataString,
+            headers: {
+              "Content-Type": "text/plain;charset=utf-8",
+            },
+          }
+        )
+          .then(function (response) {
+            // Check if the request was successful
+            if (response) {
+              return response; // Assuming your script returns JSON response
+            } else {
+              throw new Error("Failed to submit the form.");
+            }
+          })
+          .then(function (data) {
+            // Display a success message
+            document.getElementById("message").textContent =
+              "Data submitted successfully!";
+            document.getElementById("message").style.display = "block";
+            document.getElementById("message").style.backgroundColor = "green";
+            document.getElementById("message").style.color = "beige";
+            document.getElementById("submit-button").disabled = false;
+            document.getElementById("form").reset();
+
+            setTimeout(function () {
+              document.getElementById("message").textContent = "";
+              document.getElementById("message").style.display = "none";
+            }, 2600);
+          })
+          .catch(function (error) {
+            // Handle errors, you can display an error message here
+            console.error(error);
+            document.getElementById("message").textContent =
+              "An error occurred while submitting the form.";
+            document.getElementById("message").style.display = "block";
+          });
+      });
+    </script>
+  </body>
+</html>
