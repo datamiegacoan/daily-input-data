@@ -8,6 +8,38 @@
     th, td { border: 1px solid #ddd; padding: 8px; }
     th { background-color: #f2f2f2; }
     select { margin-right: 10px; padding: 5px; }
+
+    /* Gaya untuk checkbox yang dicentang */
+    input[type="checkbox"]:checked {
+      background-color: #4CAF50; /* Warna hijau */
+      border-color: #4CAF50; /* Border hijau */
+    }
+
+    /* Membuat checkbox lebih besar dan menarik */
+    input[type="checkbox"] {
+      width: 20px;
+      height: 20px;
+      appearance: none; /* Hilangkan default appearance */
+      border: 2px solid #ddd;
+      border-radius: 4px;
+      transition: background-color 0.2s, border-color 0.2s;
+    }
+
+    /* Checkbox yang dicentang */
+    input[type="checkbox"]:checked {
+      background-color: #4CAF50; /* Warna hijau */
+      border-color: #4CAF50; /* Border hijau */
+    }
+
+    /* Untuk mengubah tampilan jika kamu ingin mengganti centangnya (misalnya checkmark hijau) */
+    input[type="checkbox"]:checked::before {
+      content: "✔";
+      color: white;
+      font-size: 14px;
+      position: absolute;
+      top: 2px;
+      left: 5px;
+    }
   </style>
 </head>
 <body>
@@ -106,9 +138,18 @@
     }
 
     function renderTable(data) {
+      // Urutkan data berdasarkan timestamp secara descending
+      const sortedData = data.sort((a, b) => {
+        const timestampA = new Date(a.timestamp);
+        const timestampB = new Date(b.timestamp);
+        return timestampB - timestampA;  // Descending order
+      });
+
       const tbody = document.querySelector("#sheetData tbody");
-      tbody.innerHTML = "";
-      data.forEach(row => {
+      tbody.innerHTML = "";  // Kosongkan tabel sebelum diisi ulang
+
+      // Render data yang sudah diurutkan
+      sortedData.forEach(row => {
         const tr = document.createElement("tr");
         tr.innerHTML = `
           <td>${row.code}</td>
