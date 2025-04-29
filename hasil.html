@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Hasil Submit</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    table { border-collapse: collapse; width: 100%; margin-top: 10px; }
+    th, td { border: 1px solid #ddd; padding: 8px; }
+    th { background-color: #f2f2f2; }
+    select { margin-right: 10px; padding: 5px; }
+  </style>
+</head>
+<body>
+  <h2>Hasil Submit</h2>
+
+  <label for="filterCode">Filter Code Store:</label>
+  <select id="filterCode">
+    <option value="">Semua</option>
+  </select>
+
+  <label for="filterTanggal">Filter Sales Date:</label>
+  <select id="filterTanggal">
+    <option value="">Semua</option>
+  </select>
+
+  <table id="sheetData">
+    <thead>
+      <tr>
+        <th>Code Store</th>
+        <th>Sales Date</th>
+        <th>Timestamp</th>
+        <th>rev</th>
+        <th>input</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <script>
+    const sheetId = 1p5GtLZwBkkyl4wGsxerH3ibgFHNik4YtSgKkw0KcM_M; // ganti dengan ID Google Sheets kamu
+    const url = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:json`;
+
+    let allData = [];
+
+    fetch(url)
+      .then(res => res.text())
+      .then(rep => {
+        const json = JSON.parse(rep.substr(47).slice(0, -2));
+        const rows = json.table.rows;
+
+        // Ambil index kolom berdasarkan label
+        const headers = json.table.cols.map(col => col.label);
+        const idx = {
+          code: headers.indexOf("Code Store"),
+          tanggal: headers.indexOf("Sales Date"),
+          timestamp: headers.indexOf("Timestamp"),
+          revisi: headers.indexOf("rev"),
+          status: headers.indexOf("input")
+        };
+
+        // Proses data
+        allData = rows.map(r => ({
+          code: r.c[idx.code]?.v || "",
+          tanggal: r.c[idx.tanggal]?.v || "",
+          timestamp: r.c[idx.timestamp]?.v || "",
+          revisi: r.c[idx.revisi]?.v || "",
+          status: r.c[idx.status]?.v || ""
+        }));
+
+        populateFilters();
+        renderTable(allData);
+      });
+
+    function populateFilters() {
+      const codeSelect = document.getElementById("filterCode");
+      const tanggalSelect = document.getElementById("filterTanggal");
+
+      const codes = [...new Set(allData.map(d => d.code))].sort();
+      const tanggals = [...new Set(allData.map(d => d.tanggal))].sort();
+
+      codes.forEach(c => {
+        const opt = document.createElement("option");
+        opt.value = opt.textContent = c;
+        codeSelect.appendChild(opt);
+      });
+
+      tanggals.forEach(t => {
+        const opt = document.createElement("option");
+        opt.value = opt.textContent = t;
+        tanggalSelect.appendChild(opt);
+      });
+
+      codeSelect.addEventListener("change", applyFilters);
+      tanggalSelect.addEventListener("change", applyFilters);
+    }
+
+    function applyFilters() {
+      const code = document.getElementById("filterCode").value;
+      const tanggal = document.getElementById("filterTanggal").value;
+
+      const filtered = allData.filter(d => {
+        return (!code || d.code === code) && (!tanggal || d.tanggal === tanggal);
+      });
+
+      renderTable(filtered);
+    }
+
+    function renderTable(data) {
+      const tbody = document.querySelector("#sheetData tbody");
+      tbody.innerHTML = "";
+      data.forEach(row => {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td>${row.code}</td>
+          <td>${row.tanggal}</td>
+          <td>${row.timestamp}</td>
+          <td>${row.revisi}</td>
+          <td>${row.status}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+  </script>
+</body>
+</html>
