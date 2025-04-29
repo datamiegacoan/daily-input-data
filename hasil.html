@@ -61,8 +61,8 @@
         // Proses data
         allData = rows.map(r => ({
           code: r.c[idx.code]?.v || "",
-          tanggal: r.c[idx.tanggal]?.v || "",
-          timestamp: r.c[idx.timestamp]?.v || "",
+          tanggal: r.c[idx.tanggal]?.f || "",
+          timestamp: r.c[idx.timestamp]?.f || "",
           revisi: r.c[idx.revisi]?.v || "",
           status: r.c[idx.status]?.v || ""
         }));
@@ -115,7 +115,7 @@
           <td>${row.tanggal}</td>
           <td>${row.timestamp}</td>
           <td>${row.revisi}</td>
-          <td>${row.status}</td>
+          <td><input type="checkbox" disabled ${row.status === true || row.status === "TRUE" ? "checked" : ""}></td>
         `;
         tbody.appendChild(tr);
       });
